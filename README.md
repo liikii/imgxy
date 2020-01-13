@@ -7,9 +7,9 @@
 
 ### usage:
 ```
-./iwh_{mac|linux|win64} image_file_path
+./iwh{_mac|_linux|.exe} image_file_path
 ```
 
 *  for mac: iwh_mac
 *  for linux: iwh_linux
-*  for windows: iwh_win64
+*  for windows: iwh.exe
