@@ -8,6 +8,7 @@ import "image"
 import _ "image/jpeg"
 import "image/png"
 import "github.com/nfnt/resize"
+import "path/filepath"
 
 
 func img_resize(fp string, w uint, h uint) {
@@ -21,14 +22,15 @@ func img_resize(fp string, w uint, h uint) {
         log.Fatal(err)        
     }
     img2 := resize.Resize(w, h, img, resize.Bilinear)
-    out, err := os.Create("rmg_" + fp)
+    fp = filepath.Join(filepath.Dir(fp), "rmg_" + filepath.Base(fp))
+    out, err := os.Create(fp)
     if err != nil {
         log.Fatal(err)
     }
     defer out.Close()
     // write new image to file
     png.Encode(out, img2)
-    fmt.Println("rmg_" + fp + " ok")
+    fmt.Println(fp + " ok")
 }
 
 
